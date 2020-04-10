@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './App.css';
-import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {HashRouter as Router, Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Understanding from '../Understanding/Understanding';
 import Feeling from '../Feeling/Feeling';
@@ -19,7 +18,6 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <main>
-          {JSON.stringify(this.props.review)}
           <Router>
             <Route exact path='/' component={Feeling}/>
             <Route path='/understanding' component={Understanding}/>

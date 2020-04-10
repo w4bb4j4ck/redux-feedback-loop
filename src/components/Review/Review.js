@@ -1,24 +1,48 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Review extends Component {
+
+  handleClick = () => {
+    let obj = {
+      feeling: this.props.review[0].feeling,
+      understanding: this.props.review[1].understanding,
+      support: this.props.review[2].support,
+      comments: this.props.review[3].comments
+    }
+
+    axios.post('/feedback', obj)
+    .then((response) => {
+      console.log('Feedback saved', response);
+      this.props.dispatch({type:'CLEAR'});
+    }).catch((error) => {
+      console.log('Error in POST.', error);
+      alert('Error. Check console');
+    })
+  }
+
   render() {
     return (
       <>
       <h2>Review Your Feedback</h2>
       <ul>
-          <li>Feelings: </li>
-          <li>Understanding: </li>
-          <li>Support: </li>
-          <li>Comments: </li>
+          <li>Feelings: {this.props.review[0].feeling}</li>
+          <li>Understanding: {this.props.review[1].understanding}</li>
+          <li>Support: {this.props.review[2].support}</li>
+          <li>Comments: {this.props.review[3].comments}</li>
       </ul>
       <Link to='/success'>
-        <button>Submit</button>
+        <button onClick={this.handleClick}>Submit</button>
       </Link>
       </>
     );
   }
 }
 
-export default Review;
+const putReduxStateOnProps = (reduxStore) => ({
+  review: reduxStore.review
+})
+
+export default connect(putReduxStateOnProps)(Review);

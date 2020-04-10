@@ -10,6 +10,9 @@ const review = (state=[], action) => {
     if(action.type === 'REVIEW'){
         return [...state, action.payload];
     }
+    else if(action.type === 'CLEAR'){
+        return [];
+    }
     return state;
 }
 
