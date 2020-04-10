@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import Understanding from '../Understanding/Understanding';
 import Feeling from '../Feeling/Feeling';
 import Support from '../Support/Support';
@@ -18,6 +19,7 @@ class App extends Component {
           <h4><i>Don't forget it!</i></h4>
         </header>
         <main>
+          {JSON.stringify(this.props.review)}
           <Router>
             <Route exact path='/' component={Feeling}/>
             <Route path='/understanding' component={Understanding}/>
@@ -32,4 +34,8 @@ class App extends Component {
   }
 }
 
-export default App;
+const putReduxStateOnProps = (reduxStore) => ({
+  review: reduxStore.review
+})
+
+export default connect(putReduxStateOnProps)(App);

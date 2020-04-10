@@ -14,13 +14,8 @@ class Feeling extends Component {
     })
   }
 
-  inputValidator = () => {
-    if(this.state.number === ''){
-      return <button disabled>NEXT</button>
-    }
-    else{
-      return <button>NEXT</button>
-    }
+  handleClick = () => {
+    this.props.dispatch({type:'REVIEW', payload:{feeling: this.state.number}})
   }
 
   render() {
@@ -32,11 +27,11 @@ class Feeling extends Component {
       {this.state.number === ''
       ? <button disabled>Next</button>
       :<Link to='/understanding'>
-        <button>Next</button>
+        <button onClick={this.handleClick}>Next</button>
       </Link>}
       </>
     );
   }
 }
 
-export default Feeling;
+export default connect()(Feeling);

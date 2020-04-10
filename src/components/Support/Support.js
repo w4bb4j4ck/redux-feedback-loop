@@ -14,20 +14,24 @@ class Support extends Component {
     })
   }
 
+  handleClick = () => {
+    this.props.dispatch({type:'REVIEW', payload:{support: this.state.number}})
+  }
+
   render() {
     return (
       <>
       <h2>How well are you being supported?</h2>
       <label>Support?</label>
-      <input type="number" />
+      <input type="number" value={this.state.number} onChange={this.handleChange}/>
       {this.state.number === ''
       ? <button disabled>Next</button>
       :<Link to='/comments'>
-        <button>Next</button>
+        <button onClick={this.handleClick}>Next</button>
       </Link>}
       </>
     );
   }
 }
 
-export default Support;
+export default connect()(Support);

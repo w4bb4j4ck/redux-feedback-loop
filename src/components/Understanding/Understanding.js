@@ -14,20 +14,24 @@ class Understanding extends Component {
     })
   }
 
+  handleClick = () => {
+    this.props.dispatch({type:'REVIEW', payload:{understanding: this.state.number}})
+  }
+
   render() {
     return (
       <>
       <h2>How well are you understanding the content?</h2>
       <label>Understanding?</label>
-      <input type="number" />
+      <input type="number" value={this.state.number} onChange={this.handleChange}/>
       {this.state.number === ''
       ? <button disabled>Next</button>
       :<Link to='/support'>
-        <button>Next</button>
+        <button onClick={this.handleClick}>Next</button>
       </Link>}
       </>
     );
   }
 }
 
-export default Understanding;
+export default connect()(Understanding);
