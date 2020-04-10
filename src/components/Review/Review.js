@@ -13,9 +13,9 @@ class Review extends Component {
           <li>Support: </li>
           <li>Comments: </li>
       </ul>
-      {/* <Link to='/'> */}
+      <Link to='/success'>
         <button>Submit</button>
-      {/* </Link> */}
+      </Link>
       </>
     );
   }
