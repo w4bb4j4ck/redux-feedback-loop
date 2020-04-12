@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import './Comments.css';
 
 const styles = theme => ({
   button: {
@@ -16,7 +17,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 320,
   },
   dense: {
     marginTop: 19,
@@ -47,6 +48,7 @@ class Comments extends Component {
     return (
       <>
       <h2>Any comments you want to leave?</h2>
+      <div className="text-field">
       <TextField
           id="standard-name"
           label="Comments"
@@ -55,12 +57,15 @@ class Comments extends Component {
           onChange={this.handleChange}
           margin="normal"
         />
-      <Link to='/review'>
-        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Next</Button>
-      </Link>
+      </div>
+      <div className="btn-group">
       <Link to='/support'>
         <Button variant="contained" color="secondary" className={classes.button}>Back</Button>
       </Link>
+      <Link to='/review'>
+        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Next</Button>
+      </Link>
+      </div>
       </>
     );
   }

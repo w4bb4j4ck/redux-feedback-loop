@@ -1,0 +1,14 @@
+h2 {
+    font-family: 'Roboto';
+    margin-bottom: 60px;
+}
+
+.btn-group {
+    position: relative;
+    left: 25%;
+    margin-top: 60px;
+}
+
+.text-field {
+    margin-bottom: 100px;
+}

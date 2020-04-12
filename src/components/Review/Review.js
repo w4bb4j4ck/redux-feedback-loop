@@ -43,6 +43,7 @@ class Review extends Component {
     const classes = this.props.classes;
     return (
       <>
+      <div className="feedback-review">
       <Card className={classes.card}>
       <CardActionArea>
         <CardMedia
@@ -63,11 +64,12 @@ class Review extends Component {
         </CardContent>
       </CardActionArea>
       </Card>
-      <Link to='/success'>
-        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Submit</Button>
-      </Link>
+      </div>
       <Link to='/comments'>
         <Button variant="contained" color="secondary" className={classes.button}>Back</Button>
+      </Link>
+      <Link to='/success'>
+        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Submit</Button>
       </Link>
       </>
     );

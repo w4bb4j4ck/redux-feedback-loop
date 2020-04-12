@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import './Feeling.css';
 
 const styles = theme => ({
   button: {
@@ -16,7 +17,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 80,
   },
   dense: {
     marginTop: 19,
@@ -46,6 +47,7 @@ class Feeling extends Component {
     const classes = this.props.classes;
     return (
       <>
+      <div className="text-field">
       <h2>How are you feeling today?</h2>
       <TextField
           required
@@ -57,11 +59,15 @@ class Feeling extends Component {
           value={this.state.number}
           onChange={this.handleChange}
         />
+        </div>
+        <div className="btn-group">
       {this.state.number === ''
       ? <Button variant="contained" className={classes.button} disabled>Next</Button>
       :<Link to='/understanding'>
-        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Next</Button>
+        <Button variant="contained" color="primary" className={classes.button} 
+        onClick={this.handleClick}>Next</Button>
       </Link>}
+      </div>
       </>
     );
   }

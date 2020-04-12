@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import './Support.css';
 
 const styles = theme => ({
   button: {
@@ -16,7 +17,7 @@ const styles = theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 200,
+    width: 80,
   },
   dense: {
     marginTop: 19,
@@ -47,6 +48,7 @@ class Support extends Component {
     return (
       <>
       <h2>How well are you being supported?</h2>
+      <div className="text-field">
       <TextField
           required
           id="standard-required"
@@ -57,14 +59,17 @@ class Support extends Component {
           value={this.state.number}
           onChange={this.handleChange}
         />
+        </div>
+        <div className="btn-group">
+        <Link to='/understanding'>
+        <Button variant="contained" color="secondary" className={classes.button}>Back</Button>
+      </Link>
       {this.state.number === ''
       ? <Button variant="contained" className={classes.button} disabled>Next</Button>
       :<Link to='/comments'>
         <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Next</Button>
       </Link>}
-      <Link to='/understanding'>
-        <Button variant="contained" color="secondary" className={classes.button}>Back</Button>
-      </Link>
+      </div>
       </>
     );
   }
