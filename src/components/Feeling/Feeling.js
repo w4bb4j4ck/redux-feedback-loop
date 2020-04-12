@@ -15,7 +15,7 @@ class Feeling extends Component {
   }
 
   handleClick = () => {
-    this.props.dispatch({type:'REVIEW', payload:{feeling: this.state.number}})
+    this.props.dispatch({type:'REVIEW', payload:{number: this.state.number, stage: 'feeling'}})
   }
 
   render() {

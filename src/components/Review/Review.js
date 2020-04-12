@@ -28,13 +28,16 @@ class Review extends Component {
       <>
       <h2>Review Your Feedback</h2>
       <ul>
-          <li>Feelings: {this.props.review[0].feeling}</li>
-          <li>Understanding: {this.props.review[1].understanding}</li>
-          <li>Support: {this.props.review[2].support}</li>
-          <li>Comments: {this.props.review[3].comments}</li>
+          <li>Feelings: {this.props.review.feeling}</li>
+          <li>Understanding: {this.props.review.understanding}</li>
+          <li>Support: {this.props.review.support}</li>
+          <li>Comments: {this.props.review.comments}</li>
       </ul>
       <Link to='/success'>
         <button onClick={this.handleClick}>Submit</button>
+      </Link>
+      <Link to='/comments'>
+        <button>Back</button>
       </Link>
       </>
     );

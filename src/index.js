@@ -6,12 +6,12 @@ import registerServiceWorker from './registerServiceWorker';
 import {createStore, combineReducers} from 'redux';
 import {Provider} from 'react-redux';
 
-const review = (state=[], action) => {
+const review = (state={}, action) => {
     if(action.type === 'REVIEW'){
-        return [...state, action.payload];
+        return {...state, [action.payload.stage]: action.payload.number};
     }
     else if(action.type === 'CLEAR'){
-        return [];
+        return {};
     }
     return state;
 }

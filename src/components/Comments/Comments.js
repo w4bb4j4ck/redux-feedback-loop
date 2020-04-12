@@ -15,7 +15,7 @@ class Comments extends Component {
   }
 
   handleClick = () => {
-    this.props.dispatch({type:'REVIEW', payload:{comments: this.state.comment}})
+    this.props.dispatch({type:'REVIEW', payload:{number: this.state.comment, stage: 'comments'}})
   }
 
   render() {
@@ -26,6 +26,9 @@ class Comments extends Component {
       <input type="text" value={this.state.number} onChange={this.handleChange}/>
       <Link to='/review'>
         <button onClick={this.handleClick}>Next</button>
+      </Link>
+      <Link to='/support'>
+        <button>Back</button>
       </Link>
       </>
     );

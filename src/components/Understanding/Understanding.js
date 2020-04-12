@@ -15,8 +15,8 @@ class Understanding extends Component {
   }
 
   handleClick = () => {
-    this.props.dispatch({type:'REVIEW', payload:{understanding: this.state.number}})
-  }
+    this.props.dispatch({type:'REVIEW', payload:{number: this.state.number, stage: 'understanding'}});
+  };
 
   render() {
     return (
@@ -29,6 +29,9 @@ class Understanding extends Component {
       :<Link to='/support'>
         <button onClick={this.handleClick}>Next</button>
       </Link>}
+      <Link to='/'>
+        <button>Back</button>
+      </Link>
       </>
     );
   }

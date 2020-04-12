@@ -15,7 +15,7 @@ class Support extends Component {
   }
 
   handleClick = () => {
-    this.props.dispatch({type:'REVIEW', payload:{support: this.state.number}})
+    this.props.dispatch({type:'REVIEW', payload:{number: this.state.number, stage: 'support'}})
   }
 
   render() {
@@ -29,6 +29,9 @@ class Support extends Component {
       :<Link to='/comments'>
         <button onClick={this.handleClick}>Next</button>
       </Link>}
+      <Link to='/understanding'>
+        <button>Back</button>
+      </Link>
       </>
     );
   }
