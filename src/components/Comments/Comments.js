@@ -1,6 +1,30 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+
+const styles = theme => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1),
+    width: 200,
+  },
+  dense: {
+    marginTop: 19,
+  },
+  menu: {
+    width: 200,
+  },
+});
 
 class Comments extends Component {
 
@@ -19,20 +43,27 @@ class Comments extends Component {
   }
 
   render() {
+    const classes = this.props.classes;
     return (
       <>
       <h2>Any comments you want to leave?</h2>
-      <label>Comments?</label>
-      <input type="text" value={this.state.number} onChange={this.handleChange}/>
+      <TextField
+          id="standard-name"
+          label="Comments"
+          className={classes.textField}
+          value={this.state.comment}
+          onChange={this.handleChange}
+          margin="normal"
+        />
       <Link to='/review'>
-        <button onClick={this.handleClick}>Next</button>
+        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Next</Button>
       </Link>
       <Link to='/support'>
-        <button>Back</button>
+        <Button variant="contained" color="secondary" className={classes.button}>Back</Button>
       </Link>
       </>
     );
   }
 }
 
-export default connect()(Comments);
+export default withStyles(styles)(connect()(Comments));

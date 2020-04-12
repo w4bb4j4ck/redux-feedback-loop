@@ -2,15 +2,31 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
+const styles = theme => ({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
 
 class Review extends Component {
 
   handleClick = () => {
     let obj = {
-      feeling: this.props.review[0].feeling,
-      understanding: this.props.review[1].understanding,
-      support: this.props.review[2].support,
-      comments: this.props.review[3].comments
+      feeling: this.props.review.feeling,
+      understanding: this.props.review.understanding,
+      support: this.props.review.support,
+      comments: this.props.review.comments
     }
 
     axios.post('/feedback', obj)
@@ -24,20 +40,34 @@ class Review extends Component {
   }
 
   render() {
+    const classes = this.props.classes;
     return (
       <>
-      <h2>Review Your Feedback</h2>
-      <ul>
-          <li>Feelings: {this.props.review.feeling}</li>
-          <li>Understanding: {this.props.review.understanding}</li>
-          <li>Support: {this.props.review.support}</li>
-          <li>Comments: {this.props.review.comments}</li>
-      </ul>
+      <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          className={classes.media}
+          image="https://i.imgur.com/hdKmYNb.jpg"
+          title="Review"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            Review your feedback
+          </Typography>
+          <Typography component="ul">
+            <Typography component="li">Feelings: {this.props.review.feeling}</Typography>
+            <Typography component="li">Understanding: {this.props.review.understanding}</Typography>
+            <Typography component="li">Support: {this.props.review.support}</Typography>
+            <Typography component="li">Comments: {this.props.review.comments}</Typography>
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+      </Card>
       <Link to='/success'>
-        <button onClick={this.handleClick}>Submit</button>
+        <Button variant="contained" color="primary" className={classes.button} onClick={this.handleClick}>Submit</Button>
       </Link>
       <Link to='/comments'>
-        <button>Back</button>
+        <Button variant="contained" color="secondary" className={classes.button}>Back</Button>
       </Link>
       </>
     );
@@ -48,4 +78,4 @@ const putReduxStateOnProps = (reduxStore) => ({
   review: reduxStore.review
 })
 
-export default connect(putReduxStateOnProps)(Review);
+export default withStyles(styles)(connect(putReduxStateOnProps)(Review));
